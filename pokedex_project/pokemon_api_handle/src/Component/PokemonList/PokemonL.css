@@ -1,0 +1,38 @@
+.pokemon_list_wrapper {
+    display: flex;
+    flex-direction: column;
+    
+    
+    flex-basis: 50px;
+    margin-top: 20px;
+  }
+  
+  .pokemon_wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  
+  .controls {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .controls button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    
+  }
+  
+  .controls button:disabled {
+    background-color: #a5a5a5;
+    cursor: not-allowed;
+  }
+  

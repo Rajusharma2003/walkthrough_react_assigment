@@ -1,0 +1,21 @@
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
+import CustomRouter from './Router/CustomRouter.jsx'
+import Pokedex from './Component/Pokedex/Pokedex'
+
+function App() {
+  // const [count, setCount] = useState(0)
+
+  return (
+    <>
+       {/* <h1>pokemon project by sanket sir</h1> */}
+       {/* <Pokedex/> */}  
+       {/* iske ander hum navbar ko bhi dai skte hai ki navbar waisa hi rahe or element change hoo bss */}
+       <CustomRouter/> 
+    </>
+  )
+}
+
+export default App
