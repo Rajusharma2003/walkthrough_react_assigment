@@ -1,0 +1,54 @@
+/* Import any fonts or other necessary stylesheets here
+
+.pokemon_data_cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .pokemonName {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .pokemonImg {
+    max-width: 100%;
+    height: auto;
+  }
+   */
+
+
+
+/* Import any fonts or other necessary stylesheets here */
+
+/* Import any fonts or other necessary stylesheets here */
+
+.pokemon_data_cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .pokemonName {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .pokemonImgWrapper {
+    border: 2px solid #ccc; /* Adjust border properties as needed */
+    border-radius: 10ox; /* This will create a circular border */
+    padding: 10px; /* Adjust padding as needed */
+    background-color: #f0f0f0; /* Beautiful background color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Ensures the image does not overflow the wrapper */
+  }
+  
+  .pokemonImg {
+    max-width: 100%;
+    height: auto;
+  }
+  

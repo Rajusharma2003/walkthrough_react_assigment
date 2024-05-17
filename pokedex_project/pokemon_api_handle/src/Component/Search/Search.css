@@ -1,0 +1,19 @@
+
+  /* Additional styling for the input box */
+
+.input_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 10px;
+}
+
+
+#pokemon_name_search {
+  width: 700px;
+  padding: 10px;
+  font-size: large;
+  border-radius: 10px;
+}
+
+
