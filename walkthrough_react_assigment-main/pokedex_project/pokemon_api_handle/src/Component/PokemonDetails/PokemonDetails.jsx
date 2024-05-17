@@ -1,36 +1,41 @@
-import axios from "axios"
-import { useEffect, useState } from "react"
+// import axios from "axios"
+// import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"  // is useParams sai url kai ander sai {ID} catch kar rahe hai.
-import usePokemonList from "../../hooks/usePokemonList";
+// import usePokemonList from "../../hooks/usePokemonList";/
+import usePokemonDetails from "../../hooks/usePokemonDetails";
 
 function PokemonDetails() {
 
 
-    const {id} = useParams()
-    console.log(id);
-    const [pokemon , setPokemon] = useState({})  // pokemon ki initial value ek empty {Object} hogi.
+    const {id} = useParams();
+    const [pokemon ] = usePokemonDetails(id);
+    console.log("this is pokemon id",id);
 
-    async function downloadPokeData() {
+
+    // yai sub usePokemonDetails hooks mai define kiya gya hai.
+    // const [pokemon , setPokemon] = useState({})  // pokemon ki initial value ek empty {Object} hogi.
+
+    // async function downloadPokeData() {
           
-        const resData = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
+    //     const resData = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
         
-        setPokemon( {
-            name : resData.data.name,
-            image : resData.data.sprites.other.dream_world.front_default,
-            weight : resData.data.weight,
-            height : resData.data.height,
-            types : resData.data.types.map( (t) => t.type.name)
-        })
+    //     setPokemon( {
+    //         name : resData.data.name,
+    //         image : resData.data.sprites.other.dream_world.front_default,
+    //         weight : resData.data.weight,
+    //         height : resData.data.height,
+    //         types : resData.data.types.map( (t) => t.type.name)
+    //     })
 
-    }
+    // }
 
-    const [userStatesList] = usePokemonList(`https://pokeapi.co/api/v2/type/${pokemon.types ? pokemon.types[0] : "fire"}`, true )
+    // const [userStatesList] = usePokemonList(`https://pokeapi.co/api/v2/type/${pokemon.types ? pokemon.types[0] : "fire"}`, true )
 
 
-    useEffect( () => {
-     downloadPokeData()
-     console.log( 'Lists',userStatesList);
-    }, [])
+    // useEffect( () => {
+    //  downloadPokeData()
+    //  console.log( 'Lists',userStatesList);
+    // }, [])
 
     return(
         <div className="pokemon_data_wrapper">
@@ -44,12 +49,12 @@ function PokemonDetails() {
         </div>
 
 {/* This is showing similer data */}
-        {pokemon.types && 
+        {pokemon.types && pokemon.similerPokemon && 
         <div>
             More {pokemon.types[0]} Types Pokemon 
 
             <ul>
-                { userStatesList.pokemonList && userStatesList.pokemonList.map((p) => <li key={p.pokemon.url}>{ p.pokemon.name}</li>)}
+                { pokemon.similerPokemon.map((p) => <li key={p.pokemon.id}>{ p.pokemon.name}</li>)}
             </ul>
         </div>
 

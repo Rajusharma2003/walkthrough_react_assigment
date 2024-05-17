@@ -8,7 +8,7 @@ import usePokemonList from '../../hooks/usePokemonList';
 function PokemonList() {
 
     // This is coming from Hooks folder =>  usePokemonList.js/
-    const [ userStatesList, setUserStatesList] = usePokemonList('https://pokeapi.co/api/v2/pokemon', false);  //3
+    const [ userStatesList, setUserStatesList] = usePokemonList( false);  //3
 
 return (
      <div className='pokemon_list_wrapper'>

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState , useEffect} from "react";
 
-function usePokemonList(url, type) {   //(url)3
+function usePokemonList() {   //(url)3
 
        // const [pokemonList , setPokemonList ] = useState([])
     // const [isLoading , setIsLoading ] = useState([true])
@@ -14,21 +14,23 @@ function usePokemonList(url, type) {   //(url)3
 /** if you can not use lot of the useState then you can use the morden ("useSatate").  */
 const [userStatesList, setUserStatesList] = useState({
     // pokedexUrl: 'https://pokeapi.co/api/v2/pokemon',
-    pokedexUrl: url, //3
+    pokedexUrl: 'https://pokeapi.co/api/v2/pokemon', //3
     pokemonList: [],
     isLoading: true,
     prevUrl: '',
-    nextUrl: ''
+    nextUrl: '',
+    type : ''
 });
 
 async function downloadPokemons() {
-    // setIsLoading(true)
+   
+         // setIsLoading(true)
     setUserStatesList({ ...userStatesList, isLoading: true });
 
     const res = await axios.get(userStatesList.pokedexUrl);
     const pokemonResult = res.data.results;
 
-    console.log(res.data.pokemon);  // this is for similar pokemon.
+    // console.log(res.data.pokemon);  // this is for similar pokemon.
       // setNextUrl(res.data.next); //2
     // setPrevUrl(res.data.previous); //2
     setUserStatesList( (states) => ({
@@ -37,16 +39,7 @@ async function downloadPokemons() {
         nextUrl: res.data.next
     }));
 
-    // This if statement help to set the similer data to the pokemonList inside the setUserStatesList => userState()
-    if( type){
-        console.log('type is coming');
-        setUserStatesList( (state) => ({
-            ...state,
-            pokemonList : res.data.pokemon.slice(0 ,10)
-        }));
-        
 
-    }else{
     const pokemonResultPromise = pokemonResult.map(async (poke) => await axios.get(poke.url));
     const pokemonFinalData = await axios.all(pokemonResultPromise);
 
@@ -69,7 +62,7 @@ async function downloadPokemons() {
         pokemonList: pokemonDataFilter,
         isLoading: false
     }));
-}
+
 }
 
 useEffect(() => {
