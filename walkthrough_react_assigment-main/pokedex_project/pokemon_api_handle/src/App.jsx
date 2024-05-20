@@ -1,6 +1,6 @@
 import './App.css'
 import CustomRouter from './Router/CustomRouter.jsx'
-import Pokedex from './Component/Pokedex/Pokedex'
+// import Pokedex from './Component/Pokedex/Pokedex'
 
 function App() {
   // const [count, setCount] = useState(0)
