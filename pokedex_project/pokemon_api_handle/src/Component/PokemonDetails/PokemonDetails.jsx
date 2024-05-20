@@ -9,7 +9,7 @@ function PokemonDetails() {
 
     const {id} = useParams();
     const [pokemon ] = usePokemonDetails(id);
-    console.log("this is pokemon id",id);
+    // console.log("this is pokemon id",id);
 
 
     // yai sub usePokemonDetails hooks mai define kiya gya hai.
@@ -54,7 +54,7 @@ function PokemonDetails() {
             More {pokemon.types[0]} Types Pokemon 
 
             <ul>
-                { pokemon.similerPokemon.map((p) => <li key={p.pokemon.id}>{ p.pokemon.name}</li>)}
+                { pokemon.similerPokemon.map((p) => <li key={p.pokemon.url}>{ p.pokemon.name}</li>)}
             </ul>
         </div>
 
