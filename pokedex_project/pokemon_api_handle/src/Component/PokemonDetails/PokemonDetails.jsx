@@ -4,11 +4,12 @@ import { useParams } from "react-router-dom"  // is useParams sai url kai ander 
 // import usePokemonList from "../../hooks/usePokemonList";/
 import usePokemonDetails from "../../hooks/usePokemonDetails";
 
-function PokemonDetails() {
+// eslint-disable-next-line react/prop-types
+function PokemonDetails( {pokemonName}) {
 
 
     const {id} = useParams();
-    const [pokemon ] = usePokemonDetails(id);
+    const [pokemon ] = usePokemonDetails(id , pokemonName );    
     // console.log("this is pokemon id",id);
 
 
