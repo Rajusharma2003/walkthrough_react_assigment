@@ -1,14 +1,16 @@
+/* eslint-disable no-undef */
 
 
 import { useState } from "react"
 import PokemonList from "../PokemonList/PokemonL.jsx"
 import './pokedex.css'
 import SearchList from "../Search/SearchList.jsx"
+import PokemonDetails from "../PokemonDetails/PokemonDetails.jsx"
 
 
 
 function Pokedex() {
-    const [setSearchTerm, setSearchT] = useState('')
+    const [searchTerm, setSearchT] = useState('')
 
 
     return (
@@ -17,11 +19,11 @@ function Pokedex() {
         <div>
         <h1 className="input_box"> Pokedex </h1>
         
+        {/* updateSearchTerm is a props */}
         <SearchList updateSearchTerm={setSearchT}/>
-        {  setSearchTerm }
 
         {/*Conditional reandring  ki agar setSearchTerm ki length equal hogi (0) kai toh page blank hoga */}
-        { (setSearchTerm.length == 0) ? <PokemonList/> : ""}
+        { (!searchTerm) ? <PokemonList/> : <PokemonDetails key={searchTerm}  pokemonName={searchTerm}/>}
        
      
         </div>
