@@ -2,6 +2,10 @@ import { useState } from 'react'
 import './App.css'
 import AddTodo from './component/Add_Todo/AddTodo'
 import TodoList from './component/Todo_List/Todo_List'
+import TodoContext from './context/TodoContext'
+
+
+
 // import Login from './component/Login'
 // import Profile from './component/Profile'
 // import UseContextProvider from './context/useContextProvider'
@@ -26,12 +30,13 @@ function App() {
 
     // Todo start //
 
-    <div>
+    <TodoContext.Provider value={ {List , setList}}>
       <h1>Todo</h1>
 
        <AddTodo updateList={(todo) => setList( [...List , {id : List.length + 1 ,todoData : todo , finished : false}])}/>
-       <TodoList List={List}/>
-    </div>
+
+       <TodoList/>
+    </TodoContext.Provider>
     
   ) 
 }
