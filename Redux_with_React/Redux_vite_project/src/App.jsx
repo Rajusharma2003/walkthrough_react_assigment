@@ -1,8 +1,10 @@
-import { useState } from 'react'
+import { useReducer } from 'react'
 import './App.css'
 import AddTodo from './component/Add_Todo/AddTodo'
 import TodoList from './component/Todo_List/Todo_List'
 import TodoContext from './context/TodoContext'
+import todoReducer from './reducers/todoReducers'
+import TodoDispatchContext from './context/TodoDispatchContext'
 
 
 
@@ -14,11 +16,15 @@ function App() {
 
 
   // todoList sai ayay hai.
-  const [List , setList] = useState([
+  // comment down due to the useReaducer hook.
+//   const [List , setList] = useState([
 
-    {id : 1, todoData : 'todo 1' ,finished : false },
-    {id : 2, todoData : 'todo 2' ,finished : false }
-])
+//     {id : 1, todoData : 'todo 1' ,finished : false },
+//     {id : 2, todoData : 'todo 2' ,finished : false }
+// ])
+
+    const [List , dispatch] = useReducer(todoReducer , []);
+
   return (
    
     // <UseContextProvider >
@@ -30,12 +36,13 @@ function App() {
 
     // Todo start //
 
-    <TodoContext.Provider value={ {List , setList}}>
+    <TodoContext.Provider value={ {List}}>
+      <TodoDispatchContext.Provider value={{dispatch}}>
       <h1>Todo</h1>
-
-       <AddTodo updateList={(todo) => setList( [...List , {id : List.length + 1 ,todoData : todo , finished : false}])}/>
+       <AddTodo/>
 
        <TodoList/>
+       </TodoDispatchContext.Provider>
     </TodoContext.Provider>
     
   ) 

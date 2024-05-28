@@ -2,12 +2,15 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 
-import { useState } from "react"
+import { useContext, useState } from "react"
+import TodoDispatchContext from "../../context/TodoDispatchContext"
 
-function AddTodo({updateList}) {
+// function AddTodo({updateList})
+function AddTodo() {
 
 
     const [updateValue, setUpdateValue] = useState("")
+    const {dispatch} = useContext(TodoDispatchContext);
 
     return (
 
@@ -21,7 +24,8 @@ function AddTodo({updateList}) {
              />
 
         <button  onClick={() => {
-            updateList(updateValue);
+            // updateList(updateValue);  bec dispatch is here.
+            dispatch( {type : 'add_Todo' , payload : {todoText : updateValue}})
             setUpdateValue('');
             }}>Add</button>
 
