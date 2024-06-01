@@ -2,15 +2,19 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 
-import { useContext, useState } from "react"
-import TodoDispatchContext from "../../context/TodoDispatchContext"
+// import { useContext, useState } from "react"
+import { useState } from "react"
+// import { useDispatch } from "react-redux"
+// import {addTodo} from '../../actions/todoActions.js'
+
+// import TodoDispatchContext from "../../context/TodoDispatchContext"
 
 // function AddTodo({updateList})
-function AddTodo() {
+function AddTodo({addTodo}) {
 
-
+    // const dispatch = useDispatch();
     const [updateValue, setUpdateValue] = useState("")
-    const {dispatch} = useContext(TodoDispatchContext);
+    // const {dispatch} = useContext(TodoDispatchContext);
 
     return (
 
@@ -25,7 +29,9 @@ function AddTodo() {
 
         <button  onClick={() => {
             // updateList(updateValue);  bec dispatch is here.
-            dispatch( {type : 'add_Todo' , payload : {todoText : updateValue}})
+            // dispatch( {type : 'add_Todo' , payload : {todoText : updateValue}})
+            // dispatch(action(updateValue));
+            addTodo(updateValue);
             setUpdateValue('');
             }}>Add</button>
 

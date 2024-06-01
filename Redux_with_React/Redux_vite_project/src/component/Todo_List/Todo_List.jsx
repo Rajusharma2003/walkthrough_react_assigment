@@ -1,28 +1,37 @@
 /* eslint-disable react/prop-types */
 // import { useState } from "react"
-import { useContext } from "react"
+// import { useContext } from "react"
+// import { useDispatch, useSelector } from "react-redux"
+import {  useSelector } from "react-redux"
 import Todo from "../Todo/Todo"
-import TodoContext from "../../context/TodoContext"
-import TodoDispatchContext from "../../context/TodoDispatchContext"
+// import action from '../../actions/todoActions.js'
+// import TodoContext from "../../context/TodoContext"
+// import TodoDispatchContext from "../../context/TodoDispatchContext"
 
-function TodoList() {
+function TodoList({deleteTodo , editTodo , todoFinished}) {
 
-    const {List} = useContext(TodoContext)
-    const {dispatch} = useContext(TodoDispatchContext)
+    // const {List} = useContext(TodoContext)
+    // const {dispatch} = useContext(TodoDispatchContext)
+
+    // const dispatch = useDispatch()
+    const List = useSelector( (state) => state.todo)
 
     function onFinished(todo , isFinished){
-        dispatch({type : 'finished_todo' , payload: {todo , isFinished : isFinished}})
+        // dispatch({type : 'finished_todo' , payload: {todo , isFinished : isFinished}})
+        todoFinished(todo , isFinished)
     }
 
 
     function deleteValue(todo){
-       dispatch({type : 'delete_Todo' , payload : {todo}})
+    //    dispatch({type : 'delete_Todo' , payload : {todo}})
+    deleteTodo(todo)
     }
     
 
 
     function editvalue(todo , todoText) {
-       dispatch({ type : 'edit_Todo'  , payload: {todo , todoText}})
+    //    dispatch({ type : 'edit_Todo'  , payload: {todo , todoText}})
+    editTodo(todo , todoText)
        }
     
 

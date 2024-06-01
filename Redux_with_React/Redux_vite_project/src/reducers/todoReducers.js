@@ -1,5 +1,5 @@
 
-function todoReducer(state , action){
+function todoReducer(state=[] , action){
 
         // +++++ For AddTodo ++++
     if(action.type == 'add_Todo'){
@@ -9,7 +9,7 @@ function todoReducer(state , action){
         // +++++ For EditTodo ++++
     }else if(action.type == 'edit_Todo'){
         const todo = action.payload.todo;
-        const todoText = action.payload.todo;
+        const todoText = action.payload.todoText;
         
         const updatingValue = state.map((t) => {
             if(t.id == todo.id){
