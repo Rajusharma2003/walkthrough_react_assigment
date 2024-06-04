@@ -31,7 +31,7 @@ function AddTodo({addTodo}) {
             // updateList(updateValue);  bec dispatch is here.
             // dispatch( {type : 'add_Todo' , payload : {todoText : updateValue}})
             // dispatch(action(updateValue));
-            addTodo(updateValue);
+            addTodo({  todoText : updateValue});
             setUpdateValue('');
             }}>Add</button>
 

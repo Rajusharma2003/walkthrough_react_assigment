@@ -1,10 +1,12 @@
+/* eslint-disable no-unused-vars */
 // import { useReducer } from 'react'
 import { useDispatch } from 'react-redux'
-import './App.css'
 import AddTodo from './component/Add_Todo/AddTodo'
 import TodoList from './component/Todo_List/Todo_List'
 import { bindActionCreators } from 'redux';
-import { addTodo ,editTodo , deleteTodo ,todoFinished} from './actions/todoActions.js'
+// import { addTodo ,editTodo , deleteTodo ,todoFinished} from './actions/todoActions.js'
+
+import todoReducer ,{ addTodo , editTodo ,deleteTodo , todoFinished} from './slice/todoSlice.js'
 // import TodoContext from './context/TodoContext'
 // import todoReducer from './reducers/todoReducers'
 // import TodoDispatchContext from './context/TodoDispatchContext'
